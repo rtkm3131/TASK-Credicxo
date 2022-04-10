@@ -1,2 +1,2 @@
 # TASK-Credicxo
-download the required files
+download the required packages from requirements.txt
