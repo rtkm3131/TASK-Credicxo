@@ -1,0 +1,7 @@
+from authemail import wrapper
+account = wrapper.Authemail()
+first_name = 'Aatif'
+last_name = 'Fraz'
+email = '2019159@gmail.com'
+password = 'admin123'
+response = account.signup(first_name=first_name, last_name=last_name,email=email, password=password)

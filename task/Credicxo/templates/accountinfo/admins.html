@@ -1,0 +1,65 @@
+<h1> Student's Data </h1>
+<table style="width:100%">
+    <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email </th>
+    </thead>
+    <tbody>
+        
+    {% for st in students %}
+        <tr> 
+        <th>{{st.id}}</th>
+        <th>{{st.name}}</th>
+        <th>{{st.email}}</th>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<h4>Add Student: </h4>
+<form action={% url 'accountinfo:add_student' %} method ="POST" id="add_student">
+    {% csrf_token %}
+    <label name="studentemail">Email: </label>
+    <input type="email" name="studentemail" required>
+    <label name="newname">Name: </label>
+    <input type="text" name="newname" required>
+    <button class="ui primary button right floated" type="submit">
+        Submit
+    </button>
+</form>
+
+<br><br><br>
+---------------------------------------------------------------------------
+<br><br><br>
+
+<h1> Teacher's Data </h1>
+<table style="width:100%">
+    <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email </th>
+    </thead>
+    <tbody>
+        
+    {% for tc in teachers %}
+        <tr> 
+        <th>{{tc.id}}</th>
+        <th>{{tc.name}}</th>
+        <th>{{tc.email}}</th>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<h4>Add Teacher: </h4>
+<form action={% url 'accountinfo:add_teacher' %} method ="POST" id="add_teacher">
+    {% csrf_token %}
+    <label name="teacheremail">Email: </label>
+    <input type="email" name="teacheremail" required>
+    <label name="newname"> Name: </label>
+    <input type="text" name="newname" required>
+    <button class="ui primary button right floated" type="submit">
+        Submit
+    </button>
+</form>

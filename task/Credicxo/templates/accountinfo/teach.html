@@ -1,0 +1,31 @@
+
+<h4>Student's Data</h4>
+<table style="width:100%">
+    <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email </th>
+    </thead>
+    <tbody>
+        
+    {% for st in students %}
+        <tr> 
+        <th>{{st.id}}</th>
+        <th>{{st.name}}</th>
+        <th>{{st.email}}</th>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+---------------------------------------------------------------------------
+
+<form action={% url 'accountinfo:add_student' %} method ="POST" id="add_student">
+    {% csrf_token %}
+    <label name="studentemail">Email: </label>
+    <input type="email" name="studentemail" required>
+    <label name="newname"> Name :</label>
+    <input type="text" name="newname" required>
+    <button class="ui primary button right floated" type="submit">
+        Submit
+    </button>
+</form>
