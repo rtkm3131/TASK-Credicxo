@@ -7,6 +7,8 @@ from accountinfo.models import *
 
 # Create your views here.
 
+# Main View function, prepares the context and filters user
+# by their role, and then serves them the REST state accordigngly.
 def returnData(request):
     if request.user.id is None:
         return HttpResponse("<p> Invalid </p>")
@@ -29,6 +31,7 @@ def returnData(request):
 
     return HttpResponse("You are nobody")
 
+#View file for the student role, shows them only their own data
 def students_view(request, context):
     me = MyUser.objects.filter(id=request.user.id)[0]
     print(me.first_name, me.date_of_birth)
@@ -37,6 +40,7 @@ def students_view(request, context):
     dob = me.date_of_birth
     return HttpResponse(f'Your details are \n Email-ID: {email} \n Name: {name} \n DOB: {dob}')
 
+#View function to be used by the admin role only, to add new teachers
 def add_teacher(request):
     if request is None:
         return None
@@ -49,6 +53,7 @@ def add_teacher(request):
 
     return HttpResponseRedirect(reverse('accountinfo:returnData'))
 
+#View function to be used by a teacher or an admin, to add new students
 def add_student(request):
     print("Here")
     if request is None:
